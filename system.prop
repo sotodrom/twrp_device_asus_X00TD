@@ -1,2 +1,3 @@
-ro.display.series=ASUS_X00T
+ro.display.series=ASUS_X00TD
+rp.usb_host=1
 vendor.gatekeeper.disable_spu=true

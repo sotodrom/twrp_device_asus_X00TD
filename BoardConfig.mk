@@ -16,10 +16,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/asus/X00T
-
-# For building with minimal manifest
-ALLOW_MISSING_DEPENDENCIES := true
+DEVICE_PATH := device/asus/X00TD
 
 # Architecture
 TARGET_ARCH := arm64
@@ -27,18 +24,24 @@ TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := cortex-a73
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
 TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := ASUS_X00TD
+TARGET_OTA_ASSERT_DEVICE := ASUS_X00TD,X00TD,X00T
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := sdm636
+TARGET_NO_BOOTLOADER := true
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -50,13 +53,15 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
 
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
+
 # Kernel
 BOARD_KERNEL_CMDLINE := \
 	console=ttyMSM0,115200n8 \
 	androidboot.console=ttyMSM0 \
 	earlycon=msm_serial_dm,0xc170000 \
 	androidboot.hardware=qcom \
-	user_debug=31 \
 	msm_rtb.filter=0x37 \
 	ehci-hcd.park=3 \
 	service_locator.enable=1 \
@@ -106,7 +111,11 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
 # TWRP Configuration
+TW_DEVICE_VERSION := 1-K4.4 by dotkit
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -121,3 +130,5 @@ TW_EXCLUDE_TWRPAPP := true
 TWRP_INCLUDE_LOGCAT := true
 # TWRP Debug Flags
 TARGET_USES_LOGD := true
+TARGET_RECOVERY_DEVICE_MODULES += debuggerd
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
