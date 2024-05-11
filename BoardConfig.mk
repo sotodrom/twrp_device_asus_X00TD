@@ -129,6 +129,9 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_NO_EXFAT_FUSE := true
 
+# VINTF
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
 # TWRP_EVENT_LOGGING := true
 TWRP_INCLUDE_LOGCAT := true
 # TWRP Debug Flags
