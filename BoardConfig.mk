@@ -127,6 +127,7 @@ TW_USE_TOOLBOX := true
 TW_EXCLUDE_TWRPAPP := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
+TW_NO_EXFAT_FUSE := true
 
 # TWRP_EVENT_LOGGING := true
 TWRP_INCLUDE_LOGCAT := true
