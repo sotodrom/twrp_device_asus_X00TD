@@ -6,6 +6,7 @@ on boot
     exec u:r:recovery:s0 -- /system/bin/sleep 1s
     start keymaster-3-0
     start keymaster-3-0-qti
+    start qti-vibrator
 
 on init
     exec u:r:recovery:s0 -- /system/bin/detect-dynamic-partitions.sh
