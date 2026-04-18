@@ -142,7 +142,7 @@ $(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # TWRP specific build flags
-TW_DEVICE_VERSION := 1-K4.19 by ∂σткιт
+TW_DEVICE_VERSION := 2-K4.19 by EunjiX
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
