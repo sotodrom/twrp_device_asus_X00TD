@@ -14,10 +14,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.fastbootd.available=true
 
-# magiskboot
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/root/system/bin/magiskboot:recovery/root/system/bin/magiskboot
-
 # Qcom decryption
 PRODUCT_PACKAGES += \
     qcom_decrypt \
