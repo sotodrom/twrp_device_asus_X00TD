@@ -30,6 +30,12 @@ ALLOW_MISSING_DEPENDENCIES=true
 TARGET_BOOTLOADER_BOARD_NAME := sdm636
 TARGET_NO_BOOTLOADER := true
 
+# FUSE and Emulated Storage Configuration
+TW_INCLUDE_FUSE := true
+TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_FUSE_NTFS := true
+TW_PREPARE_DATA_MEDIA_EARLY := true
+
 # Platform
 TARGET_BOARD_PLATFORM := sdm660
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno509
@@ -106,7 +112,8 @@ BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_PARTITION_SIZE := 367001600
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -158,7 +165,6 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS := false
 TW_USE_TOOLBOX := true
 TW_EXCLUDE_APEX := true
 TW_INCLUDE_RESETPROP := true
-TW_FRAMERATE := 60
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 
