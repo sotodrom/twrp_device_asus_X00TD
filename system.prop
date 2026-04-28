@@ -2,10 +2,12 @@ sys.usb.controller=a800000.dwc3
 sys.usb.rndis.func.name=rndis_bam
 sys.usb.rmnet.func.name=rmnet_bam
 rp.usb_host=1
-vendor.gatekeeper.disable_spu=true
 
+# Crypto
+ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.filenames_mode=aes-256-cts
-ro.crypto.allow_encrypt_override=true
+ro.crypto.volume.metadata.method=dm-default-key
+ro.crypto.volume.options=::v2
 
 ro.sys.usb.storage.type=mtp
 sys.usb.config=mtp,adb
