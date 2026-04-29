@@ -3,8 +3,6 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # mount point   fstype  device                                        device2                                       flags
-/data		ext4	/dev/block/bootdevice/by-name/userdata                                                      fsflags="discard"
-/metadata       ext4    /dev/block/bootdevice/by-name/asusfw                                                        flags=display="Metadata";fsflags="discard"
 /cache          ext4    /dev/block/bootdevice/by-name/cache                                                         flags=display="Cache";canbewiped;wipeingui;wipeduringfactoryreset
 /firmware       vfat    /dev/block/bootdevice/by-name/modem
 /misc           emmc    /dev/block/bootdevice/by-name/misc
@@ -17,7 +15,7 @@
 /persist        ext4    /dev/block/bootdevice/by-name/persist                                                       flags=backup=0;display="Persist"
 
 # Removable storage
-/sdcard1        auto    /dev/block/mmcblk1p1                                                                        flags=display="MicroSD";storage;wipeingui;removable
+/sdcard1      auto   /dev/block/mmcblk1p1                                                     flags=display="MicroSD";storage;wipeingui;removable
 /usb_otg	    vfat	/dev/block/sda1						          /dev/block/sda				                flags=display="USB-OTG";storage;wipeingui;removable
 
 # Flashable logical partitions
