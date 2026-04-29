@@ -3,6 +3,10 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # mount point   fstype  device                                        device2                                       flags
+/data		        ext4	  /dev/block/bootdevice/by-name/userdata                                                      flags=fileencryption=aes-256-xts:aes-256-cts:v2+emmc_optimized,quota,reservedsize=128M,checkpoint=fs,fsverity
+/metadata       ext4    /dev/block/bootdevice/by-name/logdump                                                       flags=display="Metadata";fsflags="discard"
+/system_root    ext4   	/dev/block/bootdevice/by-name/system                                                        flags=display="System";backup=0;wipeingui
+/vendor         ext4    /dev/block/bootdevice/by-name/vendor                                                        flags=display="Vendor";backup=0;wipeingui
 /cache          ext4    /dev/block/bootdevice/by-name/cache                                                         flags=display="Cache";canbewiped;wipeingui;wipeduringfactoryreset
 /firmware       vfat    /dev/block/bootdevice/by-name/modem
 /misc           emmc    /dev/block/bootdevice/by-name/misc
@@ -15,10 +19,13 @@
 /persist        ext4    /dev/block/bootdevice/by-name/persist                                                       flags=backup=0;display="Persist"
 
 # Removable storage
-/sdcard1      auto   /dev/block/mmcblk1p1                                                     flags=display="MicroSD";storage;wipeingui;removable
-/usb_otg	    vfat	/dev/block/sda1						          /dev/block/sda				                flags=display="USB-OTG";storage;wipeingui;removable
+/sdcard1        auto    /dev/block/mmcblk1p1                                                                        flags=display="MicroSD";storage;wipeingui;removable
+/usb_otg	      vfat	  /dev/block/sda1						          /dev/block/sda				                                  flags=display="USB-OTG";storage;wipeingui;removable
+/storage        ext4    /data/media/0                  		     		                                                  flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
 
 # Flashable logical partitions
+/system_image   emmc    /dev/block/bootdevice/by-name/system                    flags=display="System";backup=1;flashimg=1
+/vendor_image   emmc    /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor";backup=1;flashimg=1
 /persist_image  emmc    /dev/block/bootdevice/by-name/persist                   flags=display="Persist";backup=1;flashimg=1
 /boot           emmc    /dev/block/bootdevice/by-name/boot                      flags=display="Boot";backup=1;flashimg=1
 /recovery       emmc    /dev/block/bootdevice/by-name/recovery                  flags=display="Recovery";backup=1;flashimg=1
